@@ -1,0 +1,19 @@
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.link {
+  color: #555;
+  text-decoration: none;
+}
+
+.link.active {
+  color: green;
+}
+
+.link.active {
+  color: #ca2665;
+  background-color: red;
+}
