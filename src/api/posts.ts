@@ -30,13 +30,13 @@ export const updatePost = async ({ id, title, body, userId }: createPostProps) =
     .then((res) => res.data);
 };
 
-export const getPosts = async (page: number) => {
+export const getPosts = async (page: any) => {
   return await axios
     .get(`${API_URL}/posts?&_expand=user&_embed=comments`, {
-      params: { _page: page, _sort: 'id', _limit: POSTS_LIMIT, _direction: 'DESC' },
+      params: { _page: page, _sort: 'id', _limit: POSTS_LIMIT },
     })
     .then((res) => {
-      const hasNext = page * POSTS_LIMIT + 1 <= parseInt(res.headers['x-total-count']);
+      const hasNext = page * POSTS_LIMIT <= parseInt(res.headers['x-total-count']);
       return {
         nextPage: hasNext ? page + 1 : (undefined as any),
         previousPage: page > 1 ? page - 1 : (undefined as any),

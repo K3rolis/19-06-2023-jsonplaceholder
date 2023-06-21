@@ -29,6 +29,8 @@ const Posts = () => {
   if (status === 'loading') return <h1>Loading...</h1>;
   if (status === 'error') return <h1>Something went wrong...</h1>;
 
+  console.log(posts);
+
   return (
     <div>
       <h1>Posts</h1>

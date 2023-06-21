@@ -7,7 +7,7 @@ import { getUsers } from '../../api/users';
 const EditPost = () => {
   const [title, setTitle] = useState<string>('');
   const [body, setBody] = useState<string>('');
-  const [user, setUser] = useState<any>();
+  const [user, setUser] = useState<number>();
   const queryClient = useQueryClient();
   const navigate = useNavigate();
   const { postId } = useParams();
@@ -16,7 +16,7 @@ const EditPost = () => {
     getPost(Number(postId)).then((data) => {
       setTitle(data.title);
       setBody(data.body);
-      setUser(data.user);
+      setUser(data.userId);
     });
   }, [postId]);
 
@@ -51,7 +51,7 @@ const EditPost = () => {
       id: post.id,
       title: title,
       body: body,
-      userId: user,
+      userId: Number(user),
     });
   };
 

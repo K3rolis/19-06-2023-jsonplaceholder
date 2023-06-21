@@ -10,3 +10,7 @@ interface UserProps {
 export const getUsers = async () => {
   return await axios.get<UserProps[]>(`${API_URL}/users`).then((res) => res.data);
 };
+
+export const getFirstUser = async () => {
+  return await axios.get<UserProps[]>(`${API_URL}/users`).then((res) => res.data);
+};
