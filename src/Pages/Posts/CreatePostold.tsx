@@ -6,7 +6,7 @@ import { getUsers } from '../../api/users';
 import PostForm from './PostFormOld';
 
 const CreatePost = () => {
-  const [formData, setFormData] = useState({ title: '', body: '', user: 0 });
+  const [formData, setFormData] = useState({ title: '', body: '', user: null });
   const queryClient = useQueryClient();
   const navigate = useNavigate();
 

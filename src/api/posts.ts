@@ -10,22 +10,14 @@ type createPostProps = {
   userId: number;
 };
 
-export const createPost = async ({ title, body, userId }: createPostProps) => {
-  return await axios
-    .post(`${API_URL}/posts`, {
-      title,
-      body,
-      userId,
-    })
-    .then((res) => res.data);
+export const createPost = async (newPost: createPostProps) => {
+  return await axios.post(`${API_URL}/posts`, newPost).then((res) => res.data);
 };
 
-export const updatePost = async ({ id, title, body, userId }: createPostProps) => {
+export const updatePost = async ({ id, ...data }: createPostProps) => {
   return await axios
     .put(`${API_URL}/posts/${id}`, {
-      title,
-      body,
-      userId,
+      ...data,
     })
     .then((res) => res.data);
 };

@@ -3,19 +3,15 @@ import axios from 'axios';
 
 import { API_URL } from '../../config/config';
 import { Link } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
+import { useMutation, useQuery } from '@tanstack/react-query';
+import { deleteUser } from '../../api/users';
 
 const Users = () => {
-  // const [users, setUsers] = useState([]);
-
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     const res = await axios.get(`${API_URL}/users`);
-  //     setUsers(res.data);
-  //   }
-
-  //   fetchData();
-  // }, []);
+  const deleteUserMutation = useMutation({
+    mutationFn: deleteUser,
+    onSuccess: () => refetch(),
+    // setPage(getLastPage(users));
+  });
 
   interface User {
     id: number;
@@ -28,6 +24,7 @@ const Users = () => {
   };
 
   const {
+    refetch,
     status,
     error,
     data: users,
@@ -44,6 +41,7 @@ const Users = () => {
   return (
     <div>
       <h1>Users:</h1>
+      <Link to={`/users/create`}>Create New User</Link>
       <ul>
         {users &&
           users.map((user: User) => (
@@ -51,6 +49,10 @@ const Users = () => {
               <Link to={`/users/${user?.id}`}>
                 {user?.name} {user?.posts?.length}
               </Link>
+              <Link to={`/users/edit/${user.id}`}> EDIT</Link>
+              <button disabled={deleteUserMutation.isLoading} onClick={() => deleteUserMutation.mutate(user.id)}>
+                DELETE
+              </button>
             </li>
           ))}
       </ul>

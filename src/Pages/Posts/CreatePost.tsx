@@ -11,6 +11,12 @@ const CreatePost = () => {
   const queryClient = useQueryClient();
   const navigate = useNavigate();
 
+  const newPost = {
+    title: title,
+    body: body,
+    userId: user,
+  };
+
   const createPostMutation = useMutation({
     mutationFn: createPost,
     onSuccess: (data) => {
@@ -30,13 +36,11 @@ const CreatePost = () => {
     setUser(users[0].id);
   }
 
+
+
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    createPostMutation.mutate({
-      title: title,
-      body: body,
-      userId: user,
-    });
+    createPostMutation.mutate(newPost);
   };
 
   return (

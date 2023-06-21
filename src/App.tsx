@@ -12,6 +12,8 @@ import Album from './Pages/Albums/Album';
 import Search from './Pages/Search/Search';
 import CreateNewPost from './Pages/Posts/CreatePost';
 import EditPost from './Pages/Posts/EditPost';
+import CreateUser from './Pages/Users/CreateUser';
+import EditUser from './Pages/Users/EditUser';
 
 // import { SearchContext } from './Contexts/SearchContext';
 
@@ -32,6 +34,8 @@ function App() {
             <Route path="/" element={<Home />}></Route>
             <Route path="/users" element={<Users />}></Route>
             <Route path="/users/:userId" element={<User />}></Route>
+            <Route path="/users/create" element={<CreateUser />}></Route>
+            <Route path="/users/edit/:userId" element={<EditUser />}></Route>
 
             <Route path="/posts" element={<Posts />}></Route>
             <Route path="/posts/:postId" element={<Post />}></Route>

@@ -20,7 +20,7 @@ const User = () => {
     error,
     data: user,
   } = useQuery({
-    queryKey: ['user', userId],
+    queryKey: ['user', Number(userId)],
     queryFn: () => getUser(Number(userId)),
   });
 
@@ -38,7 +38,7 @@ const User = () => {
         <li>Website: {user.website}</li>
         <li>Company: {user.company.name}</li>
         <li>
-          Address:{' '}
+          Address: m
           <a href={`https://www.google.com/maps/search/?api=1&query=${user.address.geo.lat},${user.address.geo.lng}`} target="_blank" rel="noreferrer noopener">
             {`${user.address.street} ${user.address.suite} ${user.address.city} (zipcode: ${user.address.zipcode})`}
           </a>

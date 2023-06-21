@@ -47,6 +47,7 @@ const EditPost = () => {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
+
     updatePostMutation.mutate({
       id: post.id,
       title: title,
