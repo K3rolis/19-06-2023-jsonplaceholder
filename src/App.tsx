@@ -10,10 +10,10 @@ import Albums from './Pages/Albums/Albums';
 import User from './Pages/Users/User';
 import Album from './Pages/Albums/Album';
 import Search from './Pages/Search/Search';
-import CreateNewPost from './Pages/Posts/CreatePost';
-import EditPost from './Pages/Posts/EditPost';
-import CreateUser from './Pages/Users/CreateUser';
-import EditUser from './Pages/Users/EditUser';
+import CreateNewPost from './components/PostForm/CreatePost';
+import EditPost from './components/PostForm/EditPost';
+import CreateUser from './components/UserForm/CreateUser';
+import EditUser from './components/UserForm/EditUser';
 
 // import { SearchContext } from './Contexts/SearchContext';
 

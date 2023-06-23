@@ -7,7 +7,7 @@ interface UserProps {
   posts: string[];
 }
 
-type createPostProps = {
+export type createUserProps = {
   id?: number;
   name: string;
   username: string;
@@ -31,7 +31,7 @@ type createPostProps = {
   };
 };
 
-export const createUser = async (newUser: createPostProps) => {
+export const createUser = async (newUser: createUserProps) => {
   return await axios.post(`${API_URL}/users`, newUser).then((res) => res.data);
 };
 
@@ -39,7 +39,7 @@ export const deleteUser = async (id: number) => {
   return await axios.delete(`${API_URL}/users/${id}`);
 };
 
-export const updateUser = async ({ id, ...data }: createPostProps) => {
+export const updateUser = async ({ id, ...data }: createUserProps) => {
   return await axios.put(`${API_URL}/users/${id}`, { ...data });
 };
 
@@ -48,7 +48,7 @@ export const getUsers = async () => {
 };
 
 export const getUser = async (id: number) => {
-  return await axios.get(`${API_URL}/users/${id}`).then((res) => res.data);
+  return await axios.get(`${API_URL}/users/${id}?_embed=posts&_embed=albums`).then((res) => res.data);
 };
 
 export const getFirstUser = async () => {

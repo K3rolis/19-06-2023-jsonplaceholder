@@ -3,7 +3,6 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import { getPosts, deletePost } from '../../api/posts';
 import { getLastPage } from '../../api/pagination';
-import { API_URL } from '../../config/config';
 
 const Posts = () => {
   const [page, setPage] = useState(1);
@@ -28,8 +27,6 @@ const Posts = () => {
 
   if (status === 'loading') return <h1>Loading...</h1>;
   if (status === 'error') return <h1>Something went wrong...</h1>;
-
-  console.log(posts);
 
   return (
     <div>

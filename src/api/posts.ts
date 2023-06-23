@@ -1,20 +1,21 @@
 import axios from 'axios';
 import { API_URL } from '../config/config';
+import { postProps } from '../Pages/Posts/PostForm';
 
 const POSTS_LIMIT = 10;
 
-type createPostProps = {
-  id?: number;
-  title: string;
-  body: string;
-  userId: number;
-};
+// type createPostProps = {
+//   id?: number;
+//   title: string;
+//   body: string;
+//   userId: number | null;
+// };
 
-export const createPost = async (newPost: createPostProps) => {
+export const createPost = async (newPost: postProps) => {
   return await axios.post(`${API_URL}/posts`, newPost).then((res) => res.data);
 };
 
-export const updatePost = async ({ id, ...data }: createPostProps) => {
+export const updatePost = async ({ id, ...data }: postProps) => {
   return await axios
     .put(`${API_URL}/posts/${id}`, {
       ...data,
